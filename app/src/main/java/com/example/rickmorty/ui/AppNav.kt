@@ -21,7 +21,10 @@ fun AppNav() {
 
         composable("episode/{id}") { backStackEntry ->
             val id = backStackEntry.arguments?.getString("id")
-            EpisodeDetailScreen(id)
+            EpisodeDetailScreen(
+                id = id,
+                navController = navController
+            )
         }
     }
 }

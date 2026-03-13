@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.rickmorty.ui.episodes.EpisodeDetailScreen
 import com.example.rickmorty.ui.episodes.EpisodesListScreen
 
 @Composable
@@ -15,11 +16,12 @@ fun AppNav() {
         startDestination = "episodes"
     ) {
         composable("episodes") {
-            EpisodesListScreen()
+            EpisodesListScreen(navController)
         }
 
-        composable("episode/{id}") {
-            // pendiente detalle
+        composable("episode/{id}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id")
+            EpisodeDetailScreen(id)
         }
     }
 }
